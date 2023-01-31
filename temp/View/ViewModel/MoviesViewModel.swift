@@ -20,6 +20,7 @@ class MoviesViewModel: ObservableObject {
     let service = MoviesService()
     
     func loadMovies() async {
+        state = .loading
         do {
             let movies = try await service.getMoviesFromAPI()
             state = .loaded(movies: movies)
